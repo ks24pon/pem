@@ -16,14 +16,38 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      logger.debug(@article.inspect)
-      logger.debug("======================")
       redirect_to articles_index_path
     else
       render 'new'
     end
   end
+  # 投稿詳細
+  def show
+    @article = Article.find(params[:id])
+  end
 
+  # 編集処理
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # 編集処理
+  def update
+    @article = Article.find(params[:id])
+    if @article.update
+      redirect_to articles_index_path
+    else
+      render 'edit'
+    end
+  end
+
+  # 削除機能
+  def destroy
+    @article = Article.find(params[:id])
+    if @article.delete
+      redirect_to articles_index_path
+    end
+  end
   # ストロングパラメーター
   private
 
