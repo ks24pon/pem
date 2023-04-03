@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+    <h1>投稿テスト</h1>
+    <%= form_with(model: @article, url: articles_path, method: :post, local: true) do |f| %>
+        <div><%= f.label :title %></div>
+        <div><%= f.text_field :title %></div><br>
+        <div><%= f.label :kind %></div>
+        <div><%= f.text_field :kind %></div><br>
+        <div><%= f.label :body %></div>
+        <div><%= f.text_field :body %></div><br>
+        <div><%= f.label :image %></div>
+        <div><%= f.text_field :image %></div><br>
+        <div><%= f.submit '投稿する' %></div>
+    <% end %>
+	</div>
+</div>
+

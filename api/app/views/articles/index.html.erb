@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row">
+		<h1>投稿一覧</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>【各投稿一覧表】</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @articles.each do |article| %>
+					<tr>
+						<td><%= article.title %></td>
+						<td><%= article.body %></td>
+						<td><%= article.image %></td>
+						<td><%= article.kind %></td>
+						<td><%= link_to '編集', articles_edit_path(article.id) %></td>
+						<td><%= link_to '詳細', articles_show_path(article.id) %></td>
+						<td><%= link_to '削除', articles_destroy_path(article.id), method: :delete %></td>
+					</tr>
+				<% end %>
+			</tbody>
+			<%= link_to '投稿画面へ', articles_new_path, class: "btn btn-primary"%>
+		</table>
+	</div>
+</div>
+
