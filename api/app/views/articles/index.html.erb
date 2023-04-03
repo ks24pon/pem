@@ -1,0 +1,19 @@
+<h1>投稿一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>投稿一覧表</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.body %></td>
+        <td><%= article.image %></td>
+        <td><%= article.kind %></td>
+        <td><%= link_to "編集" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
