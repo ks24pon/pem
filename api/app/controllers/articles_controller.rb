@@ -1,18 +1,27 @@
 class ArticlesController < ApplicationController
+  # Top画面
+  def top
+    
+  end
   # 記事一覧
   def index
-    blogs = Blog.all
-    render json: articles
+    @articles = Article.all
   end
-  # 記事詳細
-  def show
-    blog = Blog.find(params[:id])
-    render json: article
+  # 投稿画面
+  def new
+    @article = Article.new
+
   end
-  # 記事作成
+  # 投稿処理
   def create
-    Article.create(article_params)
-    head :created
+    @article = Article.new(article_params)
+    if @article.save
+      logger.debug(@article.inspect)
+      logger.debug("======================")
+      redirect_to articles_index_path
+    else
+      render 'new'
+    end
   end
 
   # ストロングパラメーター
@@ -21,7 +30,9 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(
       :title,
-      :contents
+      :body,
+      :image,
+      :kind
     )
   end
 end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-# ヘルスチェック
-get '/health_check' => 'health_checks#index'
+# Top画面
+get '/' => 'articles#top'
 # 記事一覧
-get '/articles' => 'articles#index'
-#記事詳細 
-get '/articles/:id' => 'articles#show'
+get '/articles/index' => 'articles#index'
+# 記事投稿画面
+get '/articles/new' => 'articles#new'
 #記事作成
-post '/artciles' => 'articles#create'
+post '/articles' => 'articles#create'
 end
