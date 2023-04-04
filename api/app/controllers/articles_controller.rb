@@ -56,7 +56,8 @@ class ArticlesController < ApplicationController
       :title,
       :body,
       :image,
-      :kind
+      :kind,
+      :dog_name
     )
   end
 end

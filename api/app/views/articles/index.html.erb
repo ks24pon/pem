@@ -11,6 +11,7 @@
 				<% @articles.each do |article| %>
 					<tr>
 						<td><%= article.title %></td>
+						<td><%= article.dog_name %></td>
 						<td><%= article.body %></td>
 						<td><%= article.image %></td>
 						<td><%= article.kind %></td>
@@ -20,7 +21,9 @@
 					</tr>
 				<% end %>
 			</tbody>
-			<%= link_to '投稿画面へ', articles_new_path, class: "btn btn-primary"%>
+			<%= link_to '投稿画面へ', articles_new_path, class: "mr-3" %>
+
+			<%= link_to 'Top画面へ', top_path %>
 		</table>
 	</div>
 </div>
