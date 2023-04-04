@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 # Top画面
-get '/' => 'articles#top'
+get '/' => 'articles#top', as: 'top'
 # 投稿一覧
 get '/articles/index' => 'articles#index'
 # 投稿画面
