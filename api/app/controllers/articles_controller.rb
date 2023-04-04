@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
   # Top画面
   def top
-    
   end
   # 記事一覧
   def index
@@ -10,11 +10,13 @@ class ArticlesController < ApplicationController
   # 投稿画面
   def new
     @article = Article.new
-
+    # @articles = Artice.all
   end
   # 投稿処理
   def create
     @article = Article.new(article_params)
+    # 誰が投稿したか指定
+    # @article.user_id = current_user.id
     if @article.save
       redirect_to articles_index_path
     else
@@ -23,7 +25,8 @@ class ArticlesController < ApplicationController
   end
   # 投稿詳細
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by(params[:id])
+    @user = User.find_by(id: @article.user_id)
   end
 
   # 編集処理
@@ -58,6 +61,8 @@ class ArticlesController < ApplicationController
       :image,
       :kind,
       :dog_name
+    ).merge(
+      user_id: current_user_id
     )
   end
 end
