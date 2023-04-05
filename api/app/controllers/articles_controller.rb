@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   # 記事一覧
   def index
     @articles = Article.all
+    @user = User.find_by(params[:id])
   end
   # 投稿画面
   def new
