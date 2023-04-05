@@ -16,9 +16,17 @@ Rails.application.routes.draw do
   # 投稿削除
   delete '/articles/:id/destroy' => 'articles#destroy', as: 'articles_destroy'
   # 新規登録画面
-  get '/signup' => 'users#new'
+  get '/signup/new' => 'users#new'
+  # 登録処理
+  post '/users' => 'users#create', as: 'users_create'
+  # ユーザー詳細
+  get '/users/:id/show' => 'users#show', as: 'users_show'
+  # ユーザー編集
+  get '/users/:id/edit' => 'users#edit'
+  # ユーザー編集機能
+  put '/users/' => 'users#update', as: 'users_update'
   # ユーザー関連
-  resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
+  # resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   # ログイン画面
   get '/login' => 'sessions#new'
   # ログイン処理

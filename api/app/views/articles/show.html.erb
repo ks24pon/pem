@@ -1,9 +1,13 @@
-<p>投稿詳細</p>
+<div class="container">
+	<div class="row">
+		<p>投稿詳細</p>
+		<p>【投稿詳細内容】</p>
+			<%= @article.title %><br>
+			<%= @article.body %><br>
+			<%= @article.image %><br>
+			<%= @article.kind %><br>
+			<%= @article.dog_name %><br>
+		<%= link_to '戻る', articles_index_path %>
+  </div>
+</div
 
-<p>【投稿詳細内容】</p>
-	<%= @article.title %><br>
-	<%= @article.body %><br>
-	<%= @article.image %><br>
-	<%= @article.kind %><br>
-	<%= @article.dog_name %><br>
-<%= link_to '戻る', articles_index_path %>
