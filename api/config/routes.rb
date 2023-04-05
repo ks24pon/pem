@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # ユーザー詳細
   get '/users/:id/show' => 'users#show', as: 'users_show'
   # ユーザー編集
-  get '/users/:id/edit' => 'users#edit'
+  get '/users/:id/edit' => 'users#edit', as: 'users_edit'
   # ユーザー編集機能
   put '/users/' => 'users#update', as: 'users_update'
   # ユーザー関連

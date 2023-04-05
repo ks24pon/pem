@@ -29,7 +29,19 @@ class UsersController < ApplicationController
     end
     # 編集処理
     def update
-
+			@user = User.find(params[:id])
+			# ログイン中のユーザーであるか
+			if current_user == @user
+				if @user.update
+					flash[:success] = 'ユーザーを編集しました'
+					redirect_to users_edit_path
+				else
+					flash[:danger] = 'ユーザー編集に失敗しました'
+					render :new
+				end
+			else
+				redirect_to articles_edit_path
+			end
     end
 
 		# ストロングパラメーター
