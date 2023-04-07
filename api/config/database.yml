@@ -20,7 +20,7 @@ test:
 
 production:
   # <<: *default
-  # database: production_mydb
+  database: production_mydb
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
