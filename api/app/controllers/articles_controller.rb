@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     # 誰が投稿したか指定
+    # @article.user_id = current_user.id
     if @article.save
       redirect_to articles_index_path
     else
@@ -60,7 +61,9 @@ class ArticlesController < ApplicationController
       :body,
       :image,
       :kind,
-      :dog_name,
-    ).merge(user_id: current_user.id)
+      :dog_name
+    ).merge(
+      user_id: current_user.id
+    )
   end
 end
