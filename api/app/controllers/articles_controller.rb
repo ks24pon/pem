@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
       :kind,
       :dog_name
     ).merge(
-      user_id: current_user_id
+      :user_id
     )
   end
 end
