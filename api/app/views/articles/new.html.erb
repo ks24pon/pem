@@ -11,9 +11,9 @@
           <div><%= f.label :body %></div>
           <div><%= f.text_field :body %></div><br>
           <div><%= f.label :image %></div>
-          <div><%= f.text_field :image %></div><br>
+          <div><%= f.file_field :image, accept: 'image/*' %></div><br>
+          <div><%= f.hidden_field :article_image_cache %>
           <div><%= f.submit '投稿する' %></div>
       <% end %>
 	</div>
 </div>
-
