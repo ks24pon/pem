@@ -1,11 +1,16 @@
 <div class="container">
 	<div class="row">
-		<p>投稿詳細</p>
+		<h1>投稿詳細</h1>
 		<p>【投稿詳細内容】</p>
+			<p>【タイトル】</p>
 			<%= @article.title %><br>
+			<p>【本文】</p>
 			<%= @article.body %><br>
+			<p>【画像】</p>
 			<%= @article.image %><br>
+			<p>【種類】</p>
 			<%= @article.kind %><br>
+			<p>【名前】</p>
 			<%= @article.dog_name %><br>
 		<%= link_to '戻る', articles_index_path %>
   </div>
