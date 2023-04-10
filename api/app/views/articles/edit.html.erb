@@ -1,18 +1,19 @@
 <div class="container">
 	<div class="row">
-		<p>編集処理画面</p>
+		<h1>編集処理画面</h1>
 		
 		<%= form_with(model: @article, url: articles_update_path, method: :post, local: true) do |f| %>
-				<div><%= f.label :title %></div>
-				<div><%= f.text_field :title %></div><br>
-				<div><%= f.label :kind %></div>
-				<div><%= f.text_field :kind %></div><br>
-				<div><%= f.label :dog_name %></div><br>
-				<div><%= f.text_field :dog_name %><br>
-				<div><%= f.label :body %></div>
-				<div><%= f.text_field :body %></div><br>
-				<div><%= f.label :image %></div>
-				<div><%= f.text_field :image %></div><br>
+				<div><%= f.label :title, 'タイトル' %></div>
+				<div><%= f.text_field :title, class: 'form-control' %></div><br>
+				<div><%= f.label :kind, '種類' %></div>
+				<div><%= f.select :kind, [["犬", "犬"], ["猫", "猫"]], { include_blank: '選択してください' }, { class: 'form-control', required: true} %></div><br>
+				<div><%= f.label :dog_name, '名前'%></div><br>
+				<div><%= f.text_field :dog_name, class: 'form-control' %><br>
+				<div><%= f.label :body, '本文' %></div>
+				<div><%= f.text_field :body, class: 'form-control' %></div><br>
+				<div><%= f.label :image, '画像' %></div>
+				<div><%= f.file_field :image, accept: 'image/*' %></div><br>
+				<div><%= f.hidden_field :article_image_cache %>
 				<div><%= f.submit '編集する' %></div>
 		<% end %>
   </div>
