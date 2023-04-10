@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-    <h1>投稿テスト</h1>
+    <h1>投稿画面</h1>
       <%= form_with(model: @article, url: articles_path, method: :post, local: true) do |f| %>
           <div><%= f.label :title, 'タイトル'%></div>
           <div><%= f.text_field :title, class: 'form-control'%></div><br>
