@@ -54,7 +54,8 @@ class UsersController < ApplicationController
 				:age,
 				:sex,
 				:live,
-				:password
+				:password,
+				:password_confirmation
 			)
 		end
 end
