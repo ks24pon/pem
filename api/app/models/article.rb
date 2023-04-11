@@ -6,6 +6,7 @@ class Article < ApplicationRecord
 	validates :body, presence: true
 	validates :image, presence: true
 	validates :kind, presence: true
+	validates :image, presence: true
 	# 誰が投稿したか
 	validates :user_id, presence: true
 end

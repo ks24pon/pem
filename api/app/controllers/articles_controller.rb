@@ -33,23 +33,31 @@ class ArticlesController < ApplicationController
   # 編集処理
   def edit
     @article = Article.find(params[:id])
+    unless @article.user == current_user
+      redirect_to articles_new_path
+    end
   end
 
   # 編集処理
   def update
     @article = Article.find(params[:id])
-    if @article.update
-      redirect_to articles_index_path
-    else
-      render 'edit'
+    if @article.user != current_user
+      redirect_to articles_new_path
+      if @article.update(article_params)
+        redirect_to articles_index_path
+      else
+        render :edit
+      end
     end
   end
 
   # 削除機能
   def destroy
     @article = Article.find(params[:id])
-    if @article.delete
+    if @article.user != current_user
       redirect_to articles_index_path
+    else
+      @article.destroy
     end
   end
   # ストロングパラメーター
@@ -61,7 +69,8 @@ class ArticlesController < ApplicationController
       :body,
       :image,
       :kind,
-      :dog_name
+      :dog_name,
+      :article_image_cache
     ).merge(
       user_id: current_user.id
     )
