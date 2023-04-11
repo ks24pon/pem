@@ -17,9 +17,11 @@
 							<td><%= article.body %></td>
 							<td><%= article.kind %></td>
 							<td><%= image_tag(article.image_url, width: 70) %>
-							<td><%= link_to '編集', articles_edit_path(article.id) %></td>
 							<td><%= link_to '詳細', articles_show_path(article.id) %></td>
-							<td><%= link_to '削除', articles_destroy_path(article.id), method: :delete %></td>
+              <% if article.user == current_user %>
+                <td><%= link_to '編集', articles_edit_path(article.id) %></td>
+                <td><%= link_to '削除', articles_destroy_path(article.id), method: :delete %></td>
+              <% end %>
 						</tr>
 					<% end %>
 				</tbody>

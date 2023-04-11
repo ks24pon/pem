@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # ユーザー編集
   get '/users/:id/edit' => 'users#edit', as: 'users_edit'
   # ユーザー編集機能
-  put '/users/' => 'users#update', as: 'users_update'
+  put '/users' => 'users#update', as: 'users_update'
   # ユーザー関連
   # resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   # ログイン画面
