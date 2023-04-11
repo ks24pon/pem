@@ -28,6 +28,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find_by(params[:id])
     @user = User.find_by(id: @article.user_id)
+    @comment = Comment.new
+    @comments = @article.comments.page(params[:page]).per(5).reverse_order
   end
 
   # 編集処理

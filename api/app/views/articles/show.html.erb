@@ -12,7 +12,15 @@
 			<%= @article.kind %><br>
 			<p>【名前】</p>
 			<%= @article.dog_name %><br>
+			<%= link_to '編集する', articles_edit_path(@article.id) %>
+			<%= link_to '削除する', articles_destroy_path(@article.id), method: :delete %>
 		<%= link_to '戻る', articles_index_path %>
+		
+		<%= form_with(model: [@article, @comment], url: articles_comments_path(@article), method: :post, local: true) do |f| %>
+			<%= f.text_area :comment, placeholder: "コメントする"%>
+			<%= f.submit "送信", class: "btn btn-success" %>
+		<% end %>
+		<p>コメント件数</p>
   </div>
 </div
 

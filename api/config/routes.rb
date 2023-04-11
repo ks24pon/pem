@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   put '/articles' => 'articles#update', as: 'articles_update'
   # 投稿削除
   delete '/articles/:id/destroy' => 'articles#destroy', as: 'articles_destroy'
+  # コメント処理
+  post '/articles/:article_id/comments' => 'comments#create', as: 'articles_comments'
+  # コメント削除
+  delete '/articles/:article_id/comments/:id' => 'comments#destroy', as: 'comments_destroy'
   # 新規登録画面
   get '/signup/new' => 'users#new'
   # 登録処理
