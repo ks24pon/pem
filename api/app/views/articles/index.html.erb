@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<% if logged_in? %>
+    <%= render partial: 'layouts/header' %>
 		<h1>投稿一覧</h1>
 		<p>ユーザー名：<%= @user.name %></p>
 			<table>
