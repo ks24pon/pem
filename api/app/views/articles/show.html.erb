@@ -35,7 +35,9 @@
 					<tr>
 						<td><%= comment.user.name %></td>
 						<td><%= comment.comment %></td>
-						<td><%= link_to "削除", comments_destroy_path(@article, comment), method: :delete %></td>
+						<% if logged_in? && comment.user.id == current_user.id %>
+							<td><%= link_to "削除", comments_destroy_path(@article, comment), method: :delete %></td>
+						<% end %>
 					</tr>
 				<% end %>
 			</tbody>

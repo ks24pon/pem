@@ -17,6 +17,7 @@
 							<td><%= article.body %></td>
 							<td><%= article.kind %></td>
 							<td><%= image_tag(article.image_url, width: 70) %>
+              <td>コメント数：<%= article.comments.count %></td>
 							<td><%= link_to '詳細', articles_show_path(article.id) %></td>
               <% if article.user == current_user %>
                 <td><%= link_to '編集', articles_edit_path(article.id) %></td>
