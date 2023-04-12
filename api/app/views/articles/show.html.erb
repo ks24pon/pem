@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h1>投稿詳細</h1>
+		<span>現在ログイン中のユーザー：<%= current_user.name %></span>
 		<p>【投稿詳細内容】</p>
 			<p>【タイトル】</p>
 			<%= @article.title %><br>
@@ -14,13 +15,31 @@
 			<%= @article.dog_name %><br>
 			<%= link_to '編集する', articles_edit_path(@article.id) %>
 			<%= link_to '削除する', articles_destroy_path(@article.id), method: :delete %>
-		<%= link_to '戻る', articles_index_path %>
-		
-		<%= form_with(model: [@article, @comment], url: articles_comments_path(@article), method: :post, local: true) do |f| %>
-			<%= f.text_area :comment, placeholder: "コメントする"%>
-			<%= f.submit "送信", class: "btn btn-success" %>
+			<%= link_to '戻る', articles_index_path %>
+			
+		<h2>コメント画面</h2>
+		<%= form_with(model:[@article, @comment], url: articles_comments_path(@article), method: :post, local: true) do |f| %>
+			<div><%= f.text_area :comment, placeholder: "コメントする"%></div><br>
+			<div><%= f.submit "送信", class: "btn btn-success" %></div>
 		<% end %>
-		<p>コメント件数</p>
+		<h3>コメント一覧</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>【コメントした方】</th>
+					<th>【コメント内容】</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @comments.each do |comment| %>
+					<tr>
+						<td><%= comment.user.name %></td>
+						<td><%= comment.comment %></td>
+						<td><%= link_to "削除", comments_destroy_path(@article, comment), method: :delete %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
   </div>
-</div
+</div>
 

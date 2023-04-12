@@ -26,10 +26,17 @@ class ArticlesController < ApplicationController
   end
   # 投稿詳細
   def show
-    @article = Article.find_by(params[:id])
+    # 投稿id取得
+    @article = Article.find(params[:id])
+    # 投稿IDとユーザーIDを紐付ける
     @user = User.find_by(id: @article.user_id)
+    # コメントの新規作成
     @comment = Comment.new
-    @comments = @article.comments.page(params[:page]).per(5).reverse_order
+    # この記事のコメントを　取得
+    @comments = @article.comments
+    logger.debug("========あゝああ===========")
+    logger.debug(@comments.inspect)
+    logger.debug("========あゝあああ===========")
   end
 
   # 編集処理
