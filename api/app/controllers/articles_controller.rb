@@ -34,17 +34,11 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     # この記事のコメントを　取得
     @comments = @article.comments
-    logger.debug("========あゝああ===========")
-    logger.debug(@comments.inspect)
-    logger.debug("========あゝあああ===========")
   end
 
-  # 編集処理
+  # 編集画面
   def edit
     @article = Article.find(params[:id])
-    unless @article.user == current_user
-      redirect_to articles_new_path
-    end
   end
 
   # 編集処理
