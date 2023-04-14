@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   # resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   # ログイン画面
   get '/login' => 'sessions#new'
+  # ゲストログイン画面
+  post '/guest_login' => 'guest_sessions#create'
   # ログイン処理
   post '/login' => 'sessions#create', as: 'login_create'
   # ログアウト処理
