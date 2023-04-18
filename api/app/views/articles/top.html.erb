@@ -1,21 +1,22 @@
-<header class="sticky-top">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav ml-auto">
-						<li>
-							<%= link_to "新規登録", signup_new_path, class: "btn btn-info btn-lg" %>
-						</li>
-						<li>
-							<%= link_to "ログイン", login_path, class: "btn btn-primary btn-lg" %>
-						</li>
-						<li>
-							<%= link_to "ゲストログイン", guest_login_path, class: "btn btn-warning bnt-lg", method: :post %>
-						</li>
-				</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 d-flex flex-column justify-content-center align-items-center">
+      <h1 class="text-center p-3 col-md-6">トップ画面</h1>
+			<div class="row">
+				<div class="text-center p-3 col-md-12">
+					<%= link_to "会員登録してはじめる", signup_new_path, class: "btn btn-success btn-block" %>
+				</div>
 			</div>
-	</nav>
-</header>
+			<div class="row">
+				<div class="text-center p-3 col-md-12">
+					<%= link_to "ゲストとしてはじめる", guest_login_path, class: "btn btn-secondary btn-block", method: :post %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="text-center col-md-12">
+					<%= link_to "ログインはこちら", login_path, class: "btn btn-link" %>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
