@@ -14,6 +14,11 @@
 					<% @articles.each do |article| %>
 						<tr>
 							<td><%= article.title %></td>
+							<% if current_user.liked_by?(article.id) %>
+								<td>いいねを外す</td>
+							<% else %>
+								<td>いいね</td>
+							<% end %>
 							<td><%= article.dog_name %></td>
 							<td><%= article.body %></td>
 							<td><%= article.kind %></td>
