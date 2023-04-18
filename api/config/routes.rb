@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create', as: 'login_create'
   # ログアウト処理
   delete '/logout' => 'sessions#destroy'
+  # いいね機能
+  post 'like/:id' => 'likes#create', as: 'create_like'
+  # いいね解除
+  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
 end

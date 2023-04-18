@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
 	belongs_to :user
 	has_many :comments, dependent: :destroy
+	# likeと紐付け
+	has_many :likes
 	mount_uploader :image, ImageUploader
 	# バリデーション
 	validates :title, presence: true
