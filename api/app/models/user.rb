@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # 紐付け
   has_many :likes
   #likesテーブルにarticle_idが存在するか
-  def liked_by?(article_id)
-    # likeモデルからいいねが存在するかどうか
-    likes.where(article_id: article_id).exists?
-  end
+  # def liked_by?(article_id)
+  #   # likeモデルからいいねが存在するかどうか
+  #   likes.where(article_id: article_id).exists?
+  # end
 end

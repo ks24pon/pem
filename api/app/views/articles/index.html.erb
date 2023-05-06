@@ -14,11 +14,7 @@
 					<% @articles.each do |article| %>
 						<tr>
 							<td><%= article.title %></td>
-							<% if current_user.liked_by?(article.id) %>
-								<td><%= link_to 'いいね外す', destroy_like_path(article), method: :delete %></td>
-							<% else %>
-								<td><%= link_to 'いいね', create_like_path(article), method: :post %></i></td>
-							<% end %>
+		
 							<td><%= article.dog_name %></td>
 							<td><%= article.body %></td>
 							<td><%= article.kind %></td>
@@ -41,4 +37,3 @@
 		<% end %>
 	</div>
 </div>
-
