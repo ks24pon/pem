@@ -8,7 +8,7 @@
 			<p>【本文】</p>
 			<%= @article.body %><br>
 			<p>【画像】</p>
-			<%= @article.image %><br>
+			<%= image_tag @article.image.url, size: '50×50' %><br>
 			<p>【種類】</p>
 			<%= @article.kind %><br>
 			<p>【名前】</p>

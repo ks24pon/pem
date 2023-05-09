@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :likes
   # ニックネーム
   validates :name, presence: true
-  # メールアドレス
-  validates :email, presence: true
+  # メールアドレス(大文字/小文字の区別をしない)
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   # 年齢
   validates :age, presence: true
   # 性別
@@ -19,8 +19,4 @@ class User < ApplicationRecord
   # パスワード(再確認)
   validates :password_confirmation, presence: true
   #likesテーブルにarticle_idが存在するか
-  def liked_by?(article_id)
-    # likeモデルからいいねが存在するかどうか
-    likes.where(article_id: article_id).exists?
-  end
 end
