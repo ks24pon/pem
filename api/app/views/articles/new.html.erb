@@ -2,15 +2,15 @@
 	<div class="row">
     <h1>投稿画面</h1>
       <%= form_with(model: @article, url: articles_path, method: :post, local: true) do |f| %>
-          <div><%= f.label :title, 'タイトル'%></div>
+          <div><%= f.label :title, 'タイトル' %><span> ※</span></div>
           <div><%= f.text_field :title, class: 'form-control'%></div><br>
-          <div><%= f.label :kind, '種類別'%></div>
+          <div><%= f.label :kind, '種類別' %><span> ※</span></div>
           <div><%= f.select :kind, [["犬", "犬"], ["猫", "猫"]], { include_blank: '選択してください'}, { class: 'form-control', required: true } %></div><br>
-          <div><%= f.label :dog_name, '名前' %></div>
+          <div><%= f.label :dog_name, '名前' %><span> ※</span></div>
           <div><%= f.text_field :dog_name, class: 'form-control'%></div><br>
-          <div><%= f.label :body, '本文'%></div>
+          <div><%= f.label :body, '本文' %><span> ※</span></div>
           <div><%= f.text_field :body, class: 'form-control'%></div><br>
-          <div><%= f.label :image, '画像'%></div>
+          <div><%= f.label :image, '画像'%><span> ※</span></div>
           <div><%= f.file_field :image, accept: 'image/*' %></div><br>
           <div><%= f.hidden_field :article_image_cache %>
           <div><%= f.submit '投稿する' %></div>
