@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   # 紐付け
   has_many :likes
-  # バリデーション
   # ニックネーム
   validates :name, presence: true
   # メールアドレス
