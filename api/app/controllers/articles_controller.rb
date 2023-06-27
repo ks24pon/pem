@@ -1,20 +1,23 @@
 class ArticlesController < ApplicationController
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
   # Top画面
   def top
-    
   end
   # 記事一覧
   def index
     @articles = Article.all
+    @user = User.find_by(params[:id])
   end
   # 投稿画面
   def new
     @article = Article.new
-
+    # @articles = Artice.all
   end
   # 投稿処理
   def create
     @article = Article.new(article_params)
+    # 誰が投稿したか指定
+    # @article.user_id = current_user.id
     if @article.save
       redirect_to articles_index_path
     else
@@ -23,10 +26,17 @@ class ArticlesController < ApplicationController
   end
   # 投稿詳細
   def show
+    # 投稿id取得
     @article = Article.find(params[:id])
+    # 投稿IDとユーザーIDを紐付ける
+    @user = User.find_by(id: @article.user_id)
+    # コメントの新規作成
+    @comment = Comment.new
+    # この記事のコメントを　取得
+    @comments = @article.comments
   end
 
-  # 編集処理
+  # 編集画面
   def edit
     @article = Article.find(params[:id])
   end
@@ -34,18 +44,23 @@ class ArticlesController < ApplicationController
   # 編集処理
   def update
     @article = Article.find(params[:id])
-    if @article.update
-      redirect_to articles_index_path
-    else
-      render 'edit'
+    if @article.user != current_user
+      redirect_to articles_new_path
+      if @article.update(article_params)
+        redirect_to articles_index_path
+      else
+        render :edit
+      end
     end
   end
 
   # 削除機能
   def destroy
     @article = Article.find(params[:id])
-    if @article.delete
+    if @article.user != current_user
       redirect_to articles_index_path
+    else
+      @article.destroy
     end
   end
   # ストロングパラメーター
@@ -56,7 +71,11 @@ class ArticlesController < ApplicationController
       :title,
       :body,
       :image,
-      :kind
+      :kind,
+      :dog_name,
+      :article_image_cache
+    ).merge(
+      user_id: current_user.id
     )
   end
 end

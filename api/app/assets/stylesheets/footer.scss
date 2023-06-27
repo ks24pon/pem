@@ -1,0 +1,7 @@
+.sticky-top {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1030;
+  /* It is necessary if other elements also have a position value other than static */
+}
