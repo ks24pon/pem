@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   # 登録処理
   post '/users' => 'users#create', as: 'users_create'
   # ユーザー詳細
-  get '/users/:id/show' => 'users#show', as: 'users_show'
+  get '/users/:id/show' => 'users#show', as: 'my_users_show'
   # ユーザー編集
-  get '/users/:id/edit' => 'users#edit', as: 'users_edit'
+  get '/users/:id/edit' => 'users#edit', as: 'my_users_edit'
   # ユーザー編集機能
-  put '/users' => 'users#update', as: 'users_update'
+  put '/users' => 'users#update', as: 'my_users_update'
   # ユーザー関連
   # resources :users, only: [:index, :show, :create, :edit, :update, :destroy]
   # ログイン画面

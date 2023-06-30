@@ -5,9 +5,6 @@ class CommentsController < ApplicationController
 		@article = Article.find(params[:article_id])
 		# ログインユーザーのコメントオブジェクトを生成
 		@comment = @article.comments.build(comment_params)
-		logger.debug('===============log中===========')
-		logger.debug(@comment.inspect)
-		logger.debug('================log中==========')
 		# コメントオブジェクトに投稿IDを定義
 		@comment.user_id = current_user.id
 		# 保存
